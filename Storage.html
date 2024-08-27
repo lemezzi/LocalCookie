@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Test</title>
+</head>
+<body>
+    <h1>Test du Local Storage</h1>
+
+    <button onclick="saveToLocalStorage()">Enregistrer dans le Local Storage</button>
+    <button onclick="getFromLocalStorage()">Récupérer du Local Storage</button>
+    <button onclick="removeFromLocalStorage()">Supprimer du Local Storage</button>
+
+    <p id="output"></p>
+
+    <script>
+        function saveToLocalStorage() {
+            localStorage.setItem('username', 'mezzi');
+            document.getElementById('output').textContent = 'Username enregistré!';
+        }
+
+        function getFromLocalStorage() {
+            const username = localStorage.getItem('username');
+            document.getElementById('output').textContent = `Username: ${username}`;
+        }
+
+        function removeFromLocalStorage() {
+            localStorage.removeItem('username');
+            document.getElementById('output').textContent = 'Username supprimé!';
+        }
+    </script>
+</body>
+</html>

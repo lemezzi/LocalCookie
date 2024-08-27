@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Test</title>
+</head>
+<body>
+    <h1>Test des Cookies</h1>
+
+    <button onclick="setCookie()">Enregistrer un Cookie</button>
+    <button onclick="getCookie()">Récupérer le Cookie</button>
+    <button onclick="deleteCookie()">Supprimer le Cookie</button>
+
+    <p id="output"></p>
+
+    <script>
+        // Fonction pour définir un cookie
+        function setCookie() {
+            document.cookie = "username=mezzi; path=/; max-age=3600"; // Le cookie expire dans 1 heure
+            document.getElementById('output').textContent = 'Cookie "username" enregistré!';
+        }
+
+        // Fonction pour obtenir un cookie
+        function getCookie() {
+            const name = "username=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const cookiesArray = decodedCookie.split(';');
+            let username = "";
+            cookiesArray.forEach(cookie => {
+                cookie = cookie.trim();
+                if (cookie.indexOf(name) === 0) {
+                    username = cookie.substring(name.length, cookie.length);
+                }
+            });
+            document.getElementById('output').textContent = `Cookie "username": ${username}`;
+        }
+
+        // Fonction pour supprimer un cookie
+        function deleteCookie() {
+            document.cookie = "username=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            document.getElementById('output').textContent = 'Cookie "username" supprimé!';
+        }
+    </script>
+</body>
+</html>
